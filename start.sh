@@ -1,4 +1,4 @@
 cd /fs
 sh restart.sh
-cd /shadowsocksr/shadowsocks
-python server.py
+cd /ssr/shadowsocks
+python server.py -c /config.json > /dev/null
