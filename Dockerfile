@@ -3,13 +3,13 @@ FROM anapsix/alpine-java:7_jdk
 
 RUN apk update \
     && apk add python libsodium unzip wget \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
     && mkdir /ssr \
     && cd /ssr \
     && wget --no-check-certificate https://github.com/breakwa11/shadowsocks/archive/manyuser.zip -O /tmp/manyuser.zip \
     && unzip -d /tmp /tmp/manyuser.zip \
     && mv /tmp/shadowsocksr-manyuser/shadowsocks /ssr/shadowsocks \
-    && rm -rf /tmp/*
+    && rm -rf /tmp/* \
     && apk add --no-cache --virtual .build-deps curl \
     && curl -sSL https://raw.githubusercontent.com/jonechenug/finalspeed/master/install_fs.sh --output install_fs.sh \
     && chmod +x install_fs.sh \
