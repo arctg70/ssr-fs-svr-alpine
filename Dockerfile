@@ -1,5 +1,5 @@
-FROM alpine:edge
-
+#FROM alpine:edge
+FROM anapsix/alpine-java
 
 RUN apk update \
     && apk add python libsodium unzip wget \
@@ -11,13 +11,22 @@ RUN mkdir /ssr \
     && unzip -d /tmp /tmp/manyuser.zip \
     && mv /tmp/shadowsocksr-manyuser/shadowsocks /ssr/shadowsocks \
     && rm -rf /tmp/*
-
+RUN curl -sSL https://raw.githubusercontent.com/jonechenug/finalspeed/master/install_fs.sh --output install_fs.sh \
+    && chmod +x install_fs.sh \
+    && ./install_fs.sh 2>&1 | tee install.log
 
 COPY config.json /config.json
 COPY dns.conf /ssr/shadowsocks/dns.conf
 COPY r.sh /ssr/shadowsocks/r.sh
 RUN chmod +x /ssr/shadowsocks/r.sh
 
-WORKDIR /ssr/shadowsocks
+EXPOSE 150/udp
+EXPOSE 8388
 
-CMD /ssr/shadowsocks/r.sh
+ADD start.sh /start.sh
+RUN chmod 755 /start.sh
+
+CMD ["sh", "-c", "/start.sh"]
+#WORKDIR /ssr/shadowsocks
+
+#CMD /ssr/shadowsocks/r.sh
