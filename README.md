@@ -1,7 +1,11 @@
 # ssr-fs-svr-alpine
-ssr-fs-svr-alpine
+A shadowsocksr & finalspeed server docker based on alpine
 # usage
 docker run -d -p 150:150/udp -p 8765:8765 -p 8766:8766 arctg70/ssr-fs-svr-alpine
+# to user
+port 8765 can be used by old shadowsocks client
+port 8766 is for new shadowsocksR client 
+change content of config.json as you wish
 # config.json
 {
     "server":"0.0.0.0",
