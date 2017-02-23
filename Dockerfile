@@ -1,4 +1,3 @@
-#FROM alpine:edge
 FROM anapsix/alpine-java:7_jdk
 
 RUN apk update \
@@ -14,12 +13,10 @@ RUN apk update \
     && curl -sSL https://raw.githubusercontent.com/jonechenug/finalspeed/master/install_fs.sh --output install_fs.sh \
     && chmod +x install_fs.sh \
     && ./install_fs.sh 2>&1 | tee install.log \
-    && apk del .build-deps 
+    && apk del .build-deps wget curl unzip
 
 COPY config.json /config.json
 COPY dns.conf /ssr/shadowsocks/dns.conf
-#COPY r.sh /ssr/shadowsocks/r.sh
-#RUN chmod +x /ssr/shadowsocks/r.sh
 
 EXPOSE 150/udp
 EXPOSE 8765
@@ -29,6 +26,3 @@ ADD start.sh /start.sh
 RUN chmod 755 /start.sh
 
 CMD ["sh", "-c", "/start.sh"]
-#WORKDIR /ssr/shadowsocks
-
-#CMD /ssr/shadowsocks/r.sh
