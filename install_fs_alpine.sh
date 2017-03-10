@@ -7,7 +7,7 @@ install_path=/fs/
 #rm -f $package_save_name
 echo "Download software..."
 wget https://github.com/ucoker/finalspeed/raw/master/server/finalspeed_server.zip
-        if [[ ! -d "$install_path" ]]; then
+if [[ ! -d "$install_path" ]]; then
                 mkdir "$install_path"
                 else
                 echo "Update Software..."
