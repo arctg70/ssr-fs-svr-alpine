@@ -1,6 +1,6 @@
 FROM anapsix/alpine-java:7_jdk
 
-ADD install_fs_alpine.sh /install_fs_alpine.sh
+ADD finalspeed_server.zip /finalspeed_server.zip
 RUN apk update \
     && apk add python libsodium unzip wget iptables libcap libpcap-dev \
     && rm -rf /var/cache/apk/* \
@@ -12,8 +12,8 @@ RUN apk update \
     && rm -rf /tmp/* \
     && apk add --no-cache --virtual .build-deps curl \
     && cd / \
-    && chmod +x /install_fs_alpine.sh \ 
-    && /install_fs_alpine.sh 2>&1 | tee install.log \
+    && unzip -o finalspeed_server.zip -d /fs \ 
+#    && /fs/restart.sh \
     && apk del .build-deps wget curl unzip
 
 COPY config.json /config.json
