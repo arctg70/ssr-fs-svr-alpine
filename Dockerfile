@@ -8,8 +8,8 @@ RUN apk update \
     && wget --no-check-certificate https://github.com/breakwa11/shadowsocks/archive/manyuser.zip -O /tmp/manyuser.zip \
     && unzip -d /tmp /tmp/manyuser.zip \
     && mv /tmp/shadowsocksr-manyuser/shadowsocks /ssr/shadowsocks \
-    && rm -rf /tmp/* \
-    && apk add --no-cache --virtual .build-deps curl \
+    && rm -rf /tmp/* 
+RUN apk add --no-cache --virtual .build-deps curl \
     && curl -sSL https://raw.githubusercontent.com/jonechenug/finalspeed/master/install_fs.sh --output install_fs.sh \
     && chmod +x install_fs.sh \
     && ./install_fs.sh 2>&1 | tee install.log \
