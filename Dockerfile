@@ -2,7 +2,7 @@ FROM anapsix/alpine-java:7_jdk
 
 ADD finalspeed_server.zip /finalspeed_server.zip
 RUN apk update \
-    && apk add python libsodium unzip wget iptables libcap libpcap-dev tzdata \
+    && apk add python libsodium unzip wget iptables libcap  \
     && rm -rf /var/cache/apk/* \
     && mkdir /ssr \
     && cd /ssr \
@@ -10,7 +10,7 @@ RUN apk update \
     && unzip -d /tmp /tmp/manyuser.zip \
     && mv /tmp/shadowsocksr-manyuser/shadowsocks /ssr/shadowsocks \
     && rm -rf /tmp/* \
-    && apk add --no-cache --virtual .build-deps curl \
+#    && apk add --no-cache --virtual .build-deps curl \
     && cd / \
     && unzip -o finalspeed_server.zip -d /fs \ 
 #    && /fs/restart.sh \
