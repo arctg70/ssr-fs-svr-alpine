@@ -2,7 +2,7 @@ FROM anapsix/alpine-java:7_jdk
 
 ADD finalspeed_server.zip /finalspeed_server.zip
 RUN apk update \
-    && apk add python libsodium unzip wget iptables libcap  \
+    && apk add python libsodium unzip wget iptables libcap  libcap-dev \
     && rm -rf /var/cache/apk/* \
     && mkdir /ssr \
     && cd /ssr \
