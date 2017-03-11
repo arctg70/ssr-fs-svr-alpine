@@ -14,7 +14,7 @@ RUN apk update \
     && cd / \
     && unzip -o finalspeed_server.zip -d /fs \ 
 #    && /fs/restart.sh \
-    && apk del .build-deps wget curl unzip
+    && apk del  wget  unzip
 
 COPY config.json /config.json
 COPY dns.conf /ssr/shadowsocks/dns.conf
