@@ -17,7 +17,7 @@ RUN apk update \
 COPY config.json /config.json
 COPY dns.conf /ssr/shadowsocks/dns.conf
 
-EXPOSE 150/udp
+EXPOSE 150/udp 150/tcp
 EXPOSE 8765
 EXPOSE 8766
 
