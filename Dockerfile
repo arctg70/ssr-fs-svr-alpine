@@ -10,10 +10,8 @@ RUN apk update \
     && unzip -d /tmp /tmp/manyuser.zip \
     && mv /tmp/shadowsocksr-manyuser/shadowsocks /ssr/shadowsocks \
     && rm -rf /tmp/* \
-#    && apk add --no-cache --virtual .build-deps curl \
     && cd / \
     && unzip -o finalspeed_server.zip -d /fs \ 
-#    && /fs/restart.sh \
     && apk del  wget  unzip
 
 COPY config.json /config.json
