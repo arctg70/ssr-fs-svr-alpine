@@ -8,6 +8,7 @@ port 8766 is for new shadowsocksR client
 change content of config.json as you wish
 # config.json
 {
+
     "server":"0.0.0.0",
     "server_ipv6":"::",
     "local_address":"127.0.0.1",
